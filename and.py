@@ -43,14 +43,16 @@ def Jb(x, y):
     a1 = f(z1)
     return (2 * a1 - 2 * y) * df(z1) / len(x)
 
-for i in range(10000):
+aggression = 3.5
+
+for i in range(100):
     c_b, c_w = 0, 0
     for j in range(n):
         c_b += Jb(x[j], y[j])
         c_w += Jw(x[j], y[j])
     
-    w = w - ((c_w / n) * (1 + np.random.random()) * 3.5)
-    b = b - ((c_b / n) * (1 + np.random.random()) * 3.5)
+    w = w - ((c_w / n) * (1 + np.random.random()) * aggression)
+    b = b - ((c_b / n) * (1 + np.random.random()) * aggression)
 
 def neuron(x):
     return f(w @ x + b)
